@@ -5,9 +5,9 @@ const addWindow = document.querySelectorAll(".addWindow");
 const tabArtName = document.querySelectorAll(".tabArtName");
 const songSlugger = document.querySelectorAll("#songSlugger");
 const songNamer = document.querySelectorAll("#songNamer");
-console.log(songNamer.length);
-console.log(songSlugger.length);
-console.log(tabArtName.length);
+// console.log(songNamer.length);
+// console.log(songSlugger.length);
+// console.log(tabArtName.length);
 
 for (let i = 0; i < songNamer.length; i++) {
     songNamer[i].addEventListener("input", updateSlug);
@@ -49,7 +49,12 @@ function showForm () {
 function updateSlug() {
     let changedName = this;
     let slugBefore = changedName.value;
-    let slugAfter = slugBefore.toUpperCase();
-    changedName.nextElementSibling.value = slugAfter;
+    let slugArray = [];
 
+
+for (let i = 0; i < slugBefore.length; i++) {
+   slugArray.push(slugBefore.charAt(i).toLowerCase());
+    let slugAfter = slugArray.join("");
+     changedName.nextElementSibling.value = slugAfter;
+}
 }
