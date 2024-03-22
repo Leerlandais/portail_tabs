@@ -28,8 +28,7 @@ if (isset($_POST["pwd"])) {
 }
 
 if (isset($_POST["artNom"])) {   
-    var_dump($_POST["artNom"]);
-    var_dump($db);
+
         $addArt = addArtist($db,$_POST['artNom']);
         
         if ($addArt) {        
@@ -40,9 +39,17 @@ if (isset($_POST["artNom"])) {
         }    
         
     }   
-if (isset($_POST["songNom"])) {
-    var_dump($_POST['songNom']);
+if (isset($_POST["songName"]) && isset($_POST["songTab"]) && isset($_POST["artID"])) {
+    var_dump($_POST["songName"]);
     var_dump($_POST['artID']);
+    $addSong = addSong($db, $_POST["artID"], $_POST['songName'], $_POST['songTab']);
+        
+    if ($addSong) {        
+        header("./"); 
+        exit();
+    } else {        
+        $messageError = "Something went wrong";
+    }   
 }
     
 /*  -------------     CONTROLLER    --------------  */

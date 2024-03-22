@@ -7,11 +7,16 @@
 </fieldset>
 <fieldset class="addSong">
     <legend>Add a Song</legend>
+    <?php 
+        if (isset($e)) {
+            echo $e;
+        }
     
-    <?php foreach ($artists as $artist) : ?>
+     foreach ($artists as $artist) : ?>
         <form action="" method="POST" class="addSongForm">
-        <label for="songNom"><?=$artist["artist_name"]?></label>
-        <input type="text" name="songNom">
+        <?=$artist["artist_name"]?>
+        <input type="text" name="songName"></label>
+        <input type="text" name="songTab"></label>
         <input type="text" name="artID" value="<?=$artist["artist_id"]?>">
         <button type="submit">Add</button>
 

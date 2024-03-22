@@ -108,19 +108,26 @@ function addArtist (PDO $db, string $artName) {
 }
 
 
-function addSong (PDO $db, string $artistId, string $songName) {
+function addSong (PDO $db, string $artistId, string $songName, string $songTab) {
     $cleanedID = htmlspecialchars(strip_tags(trim($artistId)), ENT_QUOTES);
     $cleanedSongName = htmlspecialchars(strip_tags(trim($songName)), ENT_QUOTES);
-    if (empty($cleanedSongName) || empty($cleanedID)) {
+    $cleanedSongTab = htmlspecialchars(strip_tags(trim($songTab)), ENT_QUOTES);
+    if (empty($cleanedSongName) || empty($cleanedID || empty($songTab))) {
         return false;
     }
 
-    $sql = "INSERT INTO `portail_tabs_song` (`artist_id`, `song_name`) VALUES (:artID, :songName)";
+    $sql = "INSERT INTO `tabs_song` (`artists_id`, `song_name`) VALUES (:artID, :songName)";
+    $sqlTab = "INSERT INTO `tabs_tab` (`song_name`,`full_song`) VALUES (:song, :tab)";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':artID', $cleanedID);
     $stmt->bindParam(':songName', $cleanedSongName);
+    
+    $stmtTab = $db->prepare($sqlTab);
+    $stmtTab->bindParam(':song', $cleanedSongName);
+    $stmtTab->bindParam(':tab', $cleanedSongName);
     try {
         $stmt->execute();
+        $stmtTab->execute();
         return true;
     } catch (PDOException $e) {
         error_log("Error adding message: " . $e->getMessage());
