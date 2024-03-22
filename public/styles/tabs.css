@@ -41,6 +41,10 @@ body {
     display: none;
 }
 
+.addWindow {
+    display: none;
+}
+
 .songName a {
     color: hsla(180, 36%, 46%, 1);
     text-decoration: none;

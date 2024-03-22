@@ -112,27 +112,36 @@ function addSong (PDO $db, string $artistId, string $songName, string $songTab) 
     $cleanedID = htmlspecialchars(strip_tags(trim($artistId)), ENT_QUOTES);
     $cleanedSongName = htmlspecialchars(strip_tags(trim($songName)), ENT_QUOTES);
     $cleanedSongTab = htmlspecialchars(strip_tags(trim($songTab)), ENT_QUOTES);
-    if (empty($cleanedSongName) || empty($cleanedID || empty($songTab))) {
+    if (empty($cleanedSongName) || empty($cleanedID || empty($cleanedSongTab))) {
         return false;
     }
 
     $sql = "INSERT INTO `tabs_song` (`artists_id`, `song_name`) VALUES (:artID, :songName)";
-    $sqlTab = "INSERT INTO `tabs_tab` (`song_name`,`full_song`) VALUES (:song, :tab)";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':artID', $cleanedID);
     $stmt->bindParam(':songName', $cleanedSongName);
     
+    try {
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        error_log("Error adding message: " . $e->getMessage());
+        return false;
+    }
+    
+    $sqlTab = "INSERT INTO `tabs_tab` (`song_name`,`full_song`) VALUES (:song, :tab)";
     $stmtTab = $db->prepare($sqlTab);
     $stmtTab->bindParam(':song', $cleanedSongName);
     $stmtTab->bindParam(':tab', $cleanedSongName);
+
     try {
-        $stmt->execute();
         $stmtTab->execute();
         return true;
     } catch (PDOException $e) {
         error_log("Error adding message: " . $e->getMessage());
         return false;
     }
+
 }
 
 /*
