@@ -53,15 +53,17 @@ function updateSlug() {
 
 
 for (let i = 0; i < slugBefore.length; i++) {
-    if (slugBefore[i] === " ") {
-        console.log("space");
-        
-        slugArray.push("-");
-    }else {
-    // slugBefore[i] === " " ? slugArray.push("-") : slugBefore[i] = slugBefore[i];
-   slugArray.push(slugBefore[i].toLowerCase());
-    }
+
+    slugBefore[i] === " " ? slugArray.push("-") :
+     slugBefore[i] === "é" ? slugArray.push("e") :
+      slugBefore[i] === "è" ? slugArray.push("e") :
+       slugBefore[i] === "à" ? slugArray.push("a") :
+        slugBefore[i] === "ç" ? slugArray.push("c") :
+         slugBefore[i] === "?" ? slugArray.push("_qm_") :
+          slugBefore[i] === "/" ? slugArray.push("_slash_") :
+           slugBefore[i] === "ù" ? slugArray.push("u") :
+            slugBefore[i] === "." ? slugArray.push("_fs_") : slugArray.push(slugBefore[i].toLowerCase());
     let slugAfter = slugArray.join("");
-     changedName.nextElementSibling.value = slugAfter;
+    changedName.nextElementSibling.value = slugAfter;
 }
 }
