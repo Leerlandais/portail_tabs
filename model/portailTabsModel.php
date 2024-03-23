@@ -1,5 +1,13 @@
 <?php
 
+
+
+
+
+
+
+/*
+
 function getArtists(PDO $db){
 
     $sql = "SELECT DISTINCT tabs_artist.artist_name, tabs_artist.artist_id
@@ -100,8 +108,6 @@ function addArtist (PDO $db, string $artName) {
 }
 }
 
-
-
 function addTablature (PDO $db, string $nom, string $slug, string $tab, string $artId) {
    // var_dump($nom, $slug, $tab);
    $cleanedNom = htmlspecialchars(strip_tags(trim($nom)), ENT_QUOTES);
@@ -135,3 +141,6 @@ function addTablature (PDO $db, string $nom, string $slug, string $tab, string $
         return false;
     }
 }
+
+
+*/

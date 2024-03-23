@@ -1,102 +1,49 @@
 body {
-    font-family: Helvetica;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    background: hsla(208, 33%, 21%, 1) 0%; 
-    color: hsla(180, 36%, 46%, 1);
-}
- 
-.headerDiv {
-    border: 2px solid  hsla(211, 36%, 46%, 1);
-    border-radius: 20px;
-    margin: 5vh auto;
-    text-align: center; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* width and fontsize to be added via media */
+    background: hsla(208, 33%, 21%, 1) 0%;
 }
 
-.artistField {
-    border: 2px solid hsla(211, 36%, 46%, 1);
-    border-radius: 20px;
-}
-
-.navLinks {
-    font-size: 1em;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
-
-.headerDiv a {
-    color: hsla(180, 36%, 46%, 1);
-    font-style: italic;
-    text-decoration: none;
-    margin: 0 25px;
-}
-.songList {
-    display: none;
-}
-
-.addWindow {
-    display: none;
-}
-
-.addWindow form {
-    display: flex;
-    flex-direction: column;
-}
-
-.songName a {
-    color: hsla(180, 36%, 46%, 1);
-    text-decoration: none;
-}
-
-.tableHolder {
-    width: 80%;
-}
-.tabWindow {
-    padding-left: 120px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-}
-
-pre {
-    font-family: monospace;
-    white-space: pre-wrap;
-  }
-
-  legend a {
-    text-decoration: none;
-    color: hsla(180, 36%, 46%, 1);
-  }
-
-  .addSongForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.global {
     
-    justify-content: center;
-    width: 100%;
-  }
+    background: rgb(188, 199, 193) 0%;
+    display: grid;
+    width: 60%;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 10vh 20vh auto;
+    margin: 10vh auto 0;
+    text-align: center;
+    grid-template-areas: 
+    "left-aside header right-aside"
+    "art-aside songWin right-aside"
+    "art-aside tabWin right-aside";
+}
 
-  .innerSong {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
+aside {
+    border: 1px solid black;
+}
 
-  .slugWindow {
-    margin: 0;
-  }
+.leftAside {
+    grid-area: left-aside;
+}
 
-  .uglyLink {
-    text-decoration: none;
-    color: aqua;
-  }
+.rightAside {
+    grid-area: right-aside;
+}
+
+.artAside {
+    grid-area: art-aside;
+}
+
+.mainH {
+    grid-area: header;
+    border: 1px solid black;
+}
+
+.songWindow {
+    grid-area: songWin;
+    border: 1px solid black;
+}
+
+.tabWindow {
+    grid-area: tabWin;
+    border: 1px solid black;
+}
