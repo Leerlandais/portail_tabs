@@ -19,7 +19,8 @@
                 <form action="" method="POST">
                     <label for="songNom">Song : </label>
                         <input type="text" name="songNom" id="songNamer">
-                        <input type="text" name="songSlug" id="songSlugger">
+                        <input type="text" name="songSlug" id="songSlugger" style="display: none;">
+                        <input type="text" name="artId" value="<?=$artist["artist_id"]?>" style="display: none;">
                         <label for="songTab">Tab : </label>
                         <input type="text" name="songTab">
                         <button type="submit">Add Song</button>

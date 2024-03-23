@@ -36,7 +36,7 @@ function getSongs(PDO $db){
     $sql = "SELECT *
     FROM    tabs_song
     JOIN    tabs_artist ON tabs_artist.artist_id = tabs_song.artists_id
-    JOIN    tabs_tab ON tabs_song.tabs_id = tabs_tab.tab_id
+    JOIN    tabs_tab ON tabs_song.song_id = tabs_tab.tab_id
     ORDER BY song_name";
 
     $stmt = $db->prepare($sql);
@@ -60,7 +60,7 @@ function getTabs(PDO $db, $song) {
 
     $sql = "SELECT *
     FROM    tabs_tab
-    JOIN    tabs_song ON tabs_tab.tab_id = tabs_song.tabs_id";
+    JOIN    tabs_song ON tabs_tab.tab_id = tabs_song.song_id";
 
     $stmt = $db->prepare($sql);
     
@@ -111,15 +111,15 @@ function addArtist (PDO $db, string $artName) {
 function addSong (PDO $db, string $artistId, string $songName, string $songTab) {
     $cleanedID = htmlspecialchars(strip_tags(trim($artistId)), ENT_QUOTES);
     $cleanedSongName = htmlspecialchars(strip_tags(trim($songName)), ENT_QUOTES);
-    $cleanedSongTab = htmlspecialchars(strip_tags(trim($songTab)), ENT_QUOTES);
-    if (empty($cleanedSongName) || empty($cleanedID || empty($cleanedSongTab))) {
+   // $cleanedSongTab = htmlspecialchars(strip_tags(trim($songTab)), ENT_QUOTES);
+    if (empty($cleanedSongName) || empty($cleanedID || empty($songTab))) {
         return false;
     }
 
     $sql = "INSERT INTO `tabs_song` (`artists_id`, `song_name`) VALUES (:artID, :songName)";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':artID', $cleanedID);
-    $stmt->bindParam(':songName', $cleanedSongName);
+    $stmt->bindParam(':songName', $songTab);
     
     try {
         $stmt->execute();
@@ -142,6 +142,40 @@ function addSong (PDO $db, string $artistId, string $songName, string $songTab) 
         return false;
     }
 
+}
+
+function addTablature (PDO $db, string $nom, string $slug, string $tab, string $artId) {
+   // var_dump($nom, $slug, $tab);
+   $cleanedNom = htmlspecialchars(strip_tags(trim($nom)), ENT_QUOTES);
+   $cleanedSlug = htmlspecialchars(strip_tags(trim($slug)), ENT_QUOTES);
+   $cleanedTab = htmlspecialchars(strip_tags(trim($tab)), ENT_QUOTES);
+   $cleanedId = htmlspecialchars(strip_tags(trim($artId)), ENT_QUOTES);
+//    var_dump($cleanedNom, $cleanedSlug, $cleanedTab, $cleanedId);
+    
+    $sql = "INSERT INTO `tabs_song` (`artists_id`,`song_name`) VALUES (:artID, :songName)"; 
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':artID', $cleanedId);
+    $stmt->bindParam(':songName', $cleanedNom);
+    try {
+        $stmt->execute();
+        
+    } catch (PDOException $e) {
+        error_log("Error adding message: " . $e->getMessage());
+        return false;
+    }
+    
+    $sqlSong = "INSERT INTO `tabs_tab` (`tab_name`, `full_song`) VALUES (:tabName, :fullSong)";
+    $stmtSong = $db->prepare($sqlSong);
+    $stmtSong->bindParam(":tabName", $cleanedSlug);
+    $stmtSong->bindParam(':fullSong', $cleanedTab);
+
+    try {
+        $stmtSong->execute();
+        return true;
+    } catch (PDOException $e) {
+        error_log("Error adding message: " . $e->getMessage());
+        return false;
+    }
 }
 
 /*
