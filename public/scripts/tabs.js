@@ -54,7 +54,9 @@ function updateSlug() {
 
 
 for (let i = 0; i < slugBefore.length; i++) {
-
+    if (/[!@#$%'^"=:<>&,;*()_+]/.test(slugBefore[i])) {
+        slugArray.push("_");
+    }else {
     slugBefore[i] === " " ? slugArray.push("-") :
      slugBefore[i] === "é" ? slugArray.push("e") :
       slugBefore[i] === "è" ? slugArray.push("e") :
@@ -64,6 +66,7 @@ for (let i = 0; i < slugBefore.length; i++) {
           slugBefore[i] === "/" ? slugArray.push("_slash_") :
            slugBefore[i] === "ù" ? slugArray.push("u") :
             slugBefore[i] === "." ? slugArray.push("_fs_") : slugArray.push(slugBefore[i].toLowerCase());
+    }
     let slugAfter = slugArray.join("");
     changedName.nextElementSibling.value = slugAfter;
     showSlug.textContent = slugAfter;
