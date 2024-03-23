@@ -26,10 +26,12 @@
                         <button type="submit">Add Song</button>
                 </form>
             </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
         </ul>
-    
-</fieldset>
+        
+    </fieldset>
+    <p class="slugWindow">Auto Generated Slug :</p>
+    <p class="slugWindow"><span id="showSlug"></span></p>
 <!--
 <fieldset>
     <legend>Add a Tab</legend>

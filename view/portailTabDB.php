@@ -12,7 +12,7 @@
 // var_dump($artists);
 ?>
 <h1>My Favourite Tablatures</h1>
-<a href="?pg=tabsLee" class="backTabs"><h4>Back to Tabs</h4></a>
+<a href="?pg=tabsLee" class="uglyLink"><h4>Back to Tabs</h4></a>
 <?php if (!isset($checkedPwd)) {?>
 <form action="" method="POST">
     <input type="password" name="pwd" id="pwd">

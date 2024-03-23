@@ -5,6 +5,7 @@ const addWindow = document.querySelectorAll(".addWindow");
 const tabArtName = document.querySelectorAll(".tabArtName");
 const songSlugger = document.querySelectorAll("#songSlugger");
 const songNamer = document.querySelectorAll("#songNamer");
+const showSlug = document.getElementById("showSlug");
 // console.log(songNamer.length);
 // console.log(songSlugger.length);
 // console.log(tabArtName.length);
@@ -65,5 +66,6 @@ for (let i = 0; i < slugBefore.length; i++) {
             slugBefore[i] === "." ? slugArray.push("_fs_") : slugArray.push(slugBefore[i].toLowerCase());
     let slugAfter = slugArray.join("");
     changedName.nextElementSibling.value = slugAfter;
+    showSlug.textContent = slugAfter;
 }
 }

@@ -7,13 +7,6 @@ function getArtists(PDO $db){
     LEFT JOIN tabs_song ON tabs_artist.artist_id = tabs_song.artists_id
     ORDER BY artist_name";
 
-    /*
-    $sql = "SELECT DISTINCT  tabs_artist.artist_name, tabs_song.song_name, tabs_tab.full_song
-            FROM    tabs_artist
-            JOIN    tabs_song ON tabs_artist.artist_id = tabs_song.artists_id
-            JOIN    tabs_tab ON tabs_song.tabs_id = tabs_tab.tab_id
-            ORDER BY artist_name";
-    */
     $stmt = $db->prepare($sql);
     
     try {
@@ -108,41 +101,6 @@ function addArtist (PDO $db, string $artName) {
 }
 
 
-function addSong (PDO $db, string $artistId, string $songName, string $songTab) {
-    $cleanedID = htmlspecialchars(strip_tags(trim($artistId)), ENT_QUOTES);
-    $cleanedSongName = htmlspecialchars(strip_tags(trim($songName)), ENT_QUOTES);
-   // $cleanedSongTab = htmlspecialchars(strip_tags(trim($songTab)), ENT_QUOTES);
-    if (empty($cleanedSongName) || empty($cleanedID || empty($songTab))) {
-        return false;
-    }
-
-    $sql = "INSERT INTO `tabs_song` (`artists_id`, `song_name`) VALUES (:artID, :songName)";
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam(':artID', $cleanedID);
-    $stmt->bindParam(':songName', $songTab);
-    
-    try {
-        $stmt->execute();
-        return true;
-    } catch (PDOException $e) {
-        error_log("Error adding message: " . $e->getMessage());
-        return false;
-    }
-    
-    $sqlTab = "INSERT INTO `tabs_tab` (`song_name`,`full_song`) VALUES (:song, :tab)";
-    $stmtTab = $db->prepare($sqlTab);
-    $stmtTab->bindParam(':song', $cleanedSongName);
-    $stmtTab->bindParam(':tab', $cleanedSongName);
-
-    try {
-        $stmtTab->execute();
-        return true;
-    } catch (PDOException $e) {
-        error_log("Error adding message: " . $e->getMessage());
-        return false;
-    }
-
-}
 
 function addTablature (PDO $db, string $nom, string $slug, string $tab, string $artId) {
    // var_dump($nom, $slug, $tab);
@@ -177,70 +135,3 @@ function addTablature (PDO $db, string $nom, string $slug, string $tab, string $
         return false;
     }
 }
-
-/*
-function getArtists(PDO $db): array {
-    $sql = "SELECT * FROM portail_tabs_artist ORDER BY artist_name ASC";
-    $query = $db->query($sql);
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    $query->closeCursor();
-    return $result;
-}
-
-
-function getSongs(PDO $db): array {
-    $sql = "SELECT * FROM portail_tabs_song ORDER BY id ASC";
-    $query = $db->query($sql);
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    $query->closeCursor();
-    return $result;
-}
-
-function getTabs(PDO $db): array {
-    $sql = "SELECT * FROM portail_tabs_tab ORDER BY id ASC";
-    $query = $db->query($sql);
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    $query->closeCursor();
-    return $result;
-}
-
-function addArtist (PDO $db, string $artName) {
-    $cleanedName = htmlspecialchars(strip_tags(trim($artName)), ENT_QUOTES);
-    if (empty($cleanedName)) {
-        return false;
-    }
-
-    $sql = "INSERT INTO `portail_tabs_artist` (`artist_name`) VALUES (:name)";
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam(':name', $cleanedName);
-    try {
-        $stmt->execute();
-        return true;
-    } catch (PDOException $e) {
-        error_log("Error adding message: " . $e->getMessage());
-        return false;
-    }
-}
-
-function addSong (PDO $db, string $artistId, string $songName) {
-    $cleanedID = htmlspecialchars(strip_tags(trim($artistId)), ENT_QUOTES);
-    $cleanedSongName = htmlspecialchars(strip_tags(trim($songName)), ENT_QUOTES);
-    if (empty($cleanedSongName) || empty($cleanedID)) {
-        return false;
-    }
-
-    $sql = "INSERT INTO `portail_tabs_song` (`artist_id`, `song_name`) VALUES (:artID, :songName)";
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam(':artID', $cleanedID);
-    $stmt->bindParam(':songName', $cleanedSongName);
-    try {
-        $stmt->execute();
-        return true;
-    } catch (PDOException $e) {
-        error_log("Error adding message: " . $e->getMessage());
-        return false;
-    }
-}
-
-*/
-

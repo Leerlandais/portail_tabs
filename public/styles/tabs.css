@@ -45,6 +45,11 @@ body {
     display: none;
 }
 
+.addWindow form {
+    display: flex;
+    flex-direction: column;
+}
+
 .songName a {
     color: hsla(180, 36%, 46%, 1);
     text-decoration: none;
@@ -89,4 +94,13 @@ pre {
     display: flex;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .slugWindow {
+    margin: 0;
+  }
+
+  .uglyLink {
+    text-decoration: none;
+    color: aqua;
   }
