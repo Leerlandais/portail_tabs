@@ -54,16 +54,12 @@ body {
     color: hsla(180, 36%, 46%, 1);
     text-decoration: none;
 }
-.showSong {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 .tableHolder {
     width: 80%;
 }
 .tabWindow {
-    padding-left: 40px;
+    padding-left: 120px;
     display: flex;
     flex-direction: row;
     justify-content: center;

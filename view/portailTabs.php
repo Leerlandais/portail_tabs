@@ -37,7 +37,7 @@
     </div>
 </fieldset>
 <p>Click <a href="?pg=tabcontrol" class="uglyLink">here</a> to add a tab</p>
-<div class="showSong">
+
     
 <?php if (isset($tabs)) {  ?>
     <?php
@@ -56,7 +56,7 @@
     endforeach;
     }
 ?>
-</div>
+
 <script src="scripts/tabs.js"></script>
 </body>
 </html>

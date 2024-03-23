@@ -20,7 +20,7 @@
 </form>
 
 <?php
-}else if (isset($checkedPwd)) {
+}else if (isset($checkedPwd) && $checkedPwd === true) {
     include("inc/portailTabAdd.php");
 }else {
     echo "Enter the Password";
