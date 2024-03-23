@@ -20,7 +20,7 @@
                     <label for="songNom">Song : </label>
                         <input type="text" name="songNom" id="songNamer">
                         <input type="text" name="songSlug" id="songSlugger">
-                    <label for="songTab">Tab : </label>
+                        <label for="songTab">Tab : </label>
                         <input type="text" name="songTab">
                         <button type="submit">Add Song</button>
                 </form>

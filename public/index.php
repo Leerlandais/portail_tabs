@@ -40,8 +40,8 @@ if (isset($_POST["artNom"])) {
         
     }   
 
-if (isset($_POST["songNom"]) && isset($_POST["songTab"])) {
-    var_dump($_POST["songNom"], $_POST["songTab"]);
+if (isset($_POST["songNom"]) && isset($_POST["songSlug"]) && isset($_POST["songTab"])) {
+    var_dump($_POST["songNom"], $_POST["songTab"], $_POST["songSlug"]);
 }
     
 /*  -------------     CONTROLLER    --------------  */

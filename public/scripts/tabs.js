@@ -53,7 +53,14 @@ function updateSlug() {
 
 
 for (let i = 0; i < slugBefore.length; i++) {
-   slugArray.push(slugBefore.charAt(i).toLowerCase());
+    if (slugBefore[i] === " ") {
+        console.log("space");
+        
+        slugArray.push("-");
+    }else {
+    // slugBefore[i] === " " ? slugArray.push("-") : slugBefore[i] = slugBefore[i];
+   slugArray.push(slugBefore[i].toLowerCase());
+    }
     let slugAfter = slugArray.join("");
      changedName.nextElementSibling.value = slugAfter;
 }
