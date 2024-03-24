@@ -11,7 +11,7 @@ function checkPass($passToCheck) {
 
 function getArtists (PDO $db) {
 
-    $sql = "SELECT DISTINCT * FROM tab_artist";
+    $sql = "SELECT DISTINCT * FROM tab_artist ORDER BY art_name ASC";
     
     
         $query = $db->query($sql);

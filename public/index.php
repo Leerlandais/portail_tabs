@@ -23,8 +23,9 @@ if (isset($_GET["slug"])) {
 }
 
 if (isset($_POST["pwd"])) {
-    $checkedPwd = false;
+    
     $checkedPwd = checkPass($_POST["pwd"]); 
+
 }
 
 if (isset($_POST["artNom"])) {
