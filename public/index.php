@@ -11,6 +11,17 @@ try {
 }    
 
 $artists = getArtists($db); // I find it really annoying that this MUST BE PLACED BEFORE the 'pg' switch!!! 
+// $songs = getSongs($db);
+
+if (isset($_GET["art"])) {
+    $songs = getSongs($db, $_GET["art"]);
+    header ("./");
+}
+
+if (isset($_GET["slug"])) {
+    $tabs = getTab($db, $_GET ["slug"]);
+}
+
 
 if(isset($_GET["pg"])){
     switch($_GET["pg"]){

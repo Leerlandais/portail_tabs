@@ -2,52 +2,33 @@
 
 function getArtists (PDO $db) {
 
-    $sql = "SELECT * FROM tab_artist";
+    $sql = "SELECT DISTINCT * FROM tab_artist";
+    
+    
         $query = $db->query($sql);
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
         $query->closeCursor();
     return $result;
 }
 
+function getSongs (PDO $db, $art) {
+    $cleanedArt = htmlspecialchars(strip_tags(trim($art)), ENT_QUOTES);
+    $sql = "SELECT * FROM tab_song WHERE artist_id = $cleanedArt";
 
+    $query = $db->query($sql);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+return $result;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function getTab (PDO $db, $slug) {
+    $cleanedSlug = htmlspecialchars(strip_tags(trim($slug)), ENT_QUOTES);
+    $sql = "SELECT * FROM `tab_tab` WHERE `tab_slug` = '$cleanedSlug'";
+    $query = $db->query($sql);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+return $result;
+}
 
 
 /*

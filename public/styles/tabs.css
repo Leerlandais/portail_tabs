@@ -7,8 +7,8 @@ body {
     background: rgb(188, 199, 193) 0%;
     display: grid;
     width: 60%;
-    grid-template-columns: 1fr 6fr 1fr;
-    grid-template-rows: 12vh 20vh auto;
+    grid-template-columns: 3fr 12fr 2fr;
+    grid-template-rows: 12vh auto auto;
     margin: 10vh auto 0;
     text-align: center;
     grid-template-areas: 
@@ -17,6 +17,9 @@ body {
     "art-aside tabWin right-aside";
 }
 
+.global a {
+    text-decoration: none;
+}
 aside {
     border: 1px solid black;
 }
@@ -33,6 +36,11 @@ aside {
     grid-area: art-aside;
 }
 
+.artAside ul {
+    list-style: none;
+    padding: 0;
+}
+
 .mainH {
     grid-area: header;
     border: 1px solid black;
@@ -46,4 +54,9 @@ aside {
 .tabWindow {
     grid-area: tabWin;
     border: 1px solid black;
+}
+
+.songList {
+    list-style: none;
+    padding: 0;
 }

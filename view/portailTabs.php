@@ -10,7 +10,7 @@
     <body>
         <?php 
     // var_dump area
-    // var_dump($db);    
+  //   var_dump($songs);    
         ?>
     <div class="global">
         <aside class="leftAside">Img Here</aside>
@@ -24,15 +24,42 @@
             
             <aside class="artAside">Artists Here
                 <ul>
-                    <?php  foreach ($artists as $artist) : ?>
-                        <li><?=$artist["art_name"]?></li>
-                        <?php endforeach; ?>
+                    <?php  foreach ($artists as $artist) : 
+                        ?>
+                     <a href="?art=<?=$artist["art_id"]?>"><li class="showSong"><?=$artist["art_name"]?></li></a>
+                        <?php 
+                    endforeach; ?>
                     </ul>
                 </aside>
-                <section class="songWindow">Songs Here
-                    
+                <section class="songWindow">
+                <?php 
+                if (isset($songs)) {
+                    foreach ($songs as $song) : 
+                        
+                        ?>
+                            <ul class="songList">
+                        <a href="?art=<?=$song["artist_id"]?>&slug=<?=$song["song_slug"]?>"><li><?=$song["song_name"]?></li></a>
+                        <?php 
+                    endforeach; 
+                }
+                    ?>
+                        </ul>
+                        <a href="">Add Tab</a>
                     </section>
                     <main class="tabWindow">Tabs Here
+                        <section class="tabWindow">
+                    <?php 
+                if (isset($tabs)) {                
+                    foreach ($tabs as $tab) :     
+                        ?>
+                            <pre>
+                                <p><?=$tab["tab"]?></p>
+                            </pre>
+                        </section>
+                        <?php 
+                 endforeach;
+            }
+                    ?>
                         </main>
     </div>
 <script src="scripts/tabs.js"></script>

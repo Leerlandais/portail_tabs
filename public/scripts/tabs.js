@@ -1,5 +1,28 @@
 
 const artistName =  document.querySelectorAll(".artistName");
+const songWindow = document.querySelectorAll(".songWindow");
+console.log (artistName.length);
+
+for (i = 0; i < artistName.length; i++) {
+    artistName[i].addEventListener("click", showSongs);
+    
+}
+
+function showSongs () {
+    let showThis = this;
+    for (i = 0; i < artistName.length; i++) {
+        songWindow[i].style.display = "none";        
+    }
+    if (showThis.nextElementSibling.style.display === "block") {
+        showThis.nextElementSibling.setAttribute("style", "display: none;");   
+    }else {
+        showThis.nextElementSibling.setAttribute("style", "display: block;");
+    }
+}
+
+
+/*
+const artistName =  document.querySelectorAll(".artistName");
 const songList = document.querySelectorAll(".songList");
 const addWindow = document.querySelectorAll(".addWindow");
 const tabArtName = document.querySelectorAll(".tabArtName");
@@ -72,3 +95,4 @@ for (let i = 0; i < slugBefore.length; i++) {
     showSlug.textContent = slugAfter;
 }
 }
+*/
