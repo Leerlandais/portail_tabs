@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?=$title?></title>
-        <link rel="stylesheet" href="styles/tabs.css">
+        <title>Tabs Page</title>
+        <link rel="stylesheet" href="styles/newTabs.css">
         
     </head>
     <body>
@@ -14,12 +14,12 @@
   $checkedPwd = true;
         ?>
     <div class="global">
-        <aside class="leftAside">Img Here</aside>
+        <aside class="leftAside"></aside>
         <div class="mainH">
             <h1>Handy place to store Tabs :&rpar;</h1>
             <nav>Links back to Portal and <a href="?pcheck">Add Tab</a></nav>
         </div>
-        <aside class="rightAside">Img Here
+        <aside class="rightAside">
             </aside>
             
             
@@ -27,7 +27,7 @@
                 <ul>
                     <?php  foreach ($artists as $artist) : 
                         ?>
-                     <a href="?&art=<?=$artist["art_id"]?>"><li class="showSong"><?=$artist["art_name"]?></li></a>
+                     <a href="?pg&art=<?=$artist["art_id"]?>"><li class="showSong"><?=$artist["art_name"]?></li></a>
                         <?php 
                     endforeach; ?>
                     </ul>
@@ -39,7 +39,7 @@
                         
                         ?>
                             <ul class="songList">
-                        <a href="?art=<?=$song["artist_id"]?>&slug=<?=$song["song_slug"]?>"><li><?=$song["song_name"]?></li></a>
+                        <a href="?pg&art=<?=$song["artist_id"]?>&slug=<?=$song["song_slug"]?>"><li><?=$song["song_name"]?></li></a>
                         <?php 
                     endforeach; 
                 }
@@ -47,12 +47,13 @@
                         </ul>
                         
                     </section>
-                    <main class="tabWindow">Tabs Here
+                    <main class="tabWin">Tabs Here
                         <section class="tabWindow">
                     <?php 
+                    
                 if (isset($tabs)) {                
                     foreach ($tabs as $tab) :     
-                        ?>
+                        ?><button onClick="scrollToBottom('.tabWindow',1000)">Scroll to Bottom</button>
                             <pre>
                                 <p><?=$tab["tab"]?></p>
                             </pre>

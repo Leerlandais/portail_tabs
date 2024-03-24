@@ -15,7 +15,7 @@ $artists = getArtists($db); // I find it really annoying that this MUST BE PLACE
 
 if (isset($_GET["art"])) {
     $songs = getSongs($db, $_GET["art"]);
-    header ("./");
+  //  header ("./");
 }
 
 if (isset($_GET["slug"])) {
@@ -23,8 +23,9 @@ if (isset($_GET["slug"])) {
 }
 
 if (isset($_POST["pwd"])) {
-    $checkedPwd = false;
+    
     $checkedPwd = checkPass($_POST["pwd"]); 
+
 }
 
 if (isset($_POST["artNom"])) {
@@ -38,25 +39,8 @@ if (isset($_POST["songNom"]) && isset($_POST["songSlug"]) && isset($_POST["songT
    }
 
 
-if(isset($_GET["pg"])){
-    switch($_GET["pg"]){
-        case 'tabsLee':
-            $title = "tabsLee";
+
             include("../view/portailTabs.php");
-            break;
-            case 'tabcontrol' :
-                $title = "Add tabs";
-                include("../view/portailTabDB.php");
-                break;
-                default :
-                $title = "Page d'Accueil";
-                include("../view/portailTabs.php");
-            }
-        }else{
-            $title = "Page d'Accueil";
-            include("../view/portailTabs.php");
-            
-    }
 
     
 

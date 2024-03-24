@@ -11,7 +11,7 @@ function checkPass($passToCheck) {
 
 function getArtists (PDO $db) {
 
-    $sql = "SELECT DISTINCT * FROM tab_artist";
+    $sql = "SELECT DISTINCT * FROM tab_artist ORDER BY art_name ASC";
     
     
         $query = $db->query($sql);
@@ -22,7 +22,7 @@ function getArtists (PDO $db) {
 
 function getSongs (PDO $db, $art) {
     $cleanedArt = htmlspecialchars(strip_tags(trim($art)), ENT_QUOTES);
-    $sql = "SELECT * FROM tab_song WHERE artist_id = $cleanedArt";
+    $sql = "SELECT * FROM tab_song WHERE artist_id = $cleanedArt ORDER BY song_name ASC";
 
     $query = $db->query($sql);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);

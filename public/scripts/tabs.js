@@ -51,6 +51,24 @@ for (let i = 0; i < slugBefore.length; i++) {
     showSlug.textContent = slugAfter;
 }
 }
+
+const scrollToBottom = (id, duration) => {
+    const element = document.querySelector(id);
+    const scrollHeight = element.scrollHeight;
+    const scrollStep = (duration / 1000);
+    let count = 0;
+
+    const scrollInterval = setInterval(function(){
+        if (element.scrollTop + element.clientHeight < scrollHeight) {
+            element.scrollBy(0, scrollStep);
+
+            count++;
+        } else {
+            clearInterval(scrollInterval);
+        }
+    }, 200);
+};
+
 /*
 const artistName =  document.querySelectorAll(".artistName");
 const songList = document.querySelectorAll(".songList");
