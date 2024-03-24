@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `tab_artist` (
   `art_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `art_name` varchar(255) NOT NULL,
   PRIMARY KEY (`art_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tab_artist`
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `tab_song` (
   `song_name` varchar(100) NOT NULL,
   `song_slug` varchar(255) NOT NULL,
   PRIMARY KEY (`song_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tab_song`
@@ -76,9 +76,9 @@ DROP TABLE IF EXISTS `tab_tab`;
 CREATE TABLE IF NOT EXISTS `tab_tab` (
   `tab_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `tab_slug` varchar(255) NOT NULL,
-  `tab` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `tab` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`tab_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tab_tab`

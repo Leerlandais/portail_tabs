@@ -47,12 +47,13 @@
                         </ul>
                         
                     </section>
-                    <main class="tabWindow">Tabs Here
+                    <main class="tabWin">Tabs Here
                         <section class="tabWindow">
                     <?php 
+                    
                 if (isset($tabs)) {                
                     foreach ($tabs as $tab) :     
-                        ?>
+                        ?><button onClick="scrollToBottom('.tabWindow',1000)">Scroll to Bottom</button>
                             <pre>
                                 <p><?=$tab["tab"]?></p>
                             </pre>

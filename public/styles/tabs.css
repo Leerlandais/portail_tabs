@@ -53,7 +53,9 @@ aside {
 
 .tabWindow {
     grid-area: tabWin;
+    height: 50vh;
     border: 1px solid black;
+    overflow-y:scroll;
 }
 
 .songList {
