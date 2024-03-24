@@ -29,13 +29,7 @@ if (isset($_POST["pwd"])) {
 
 if (isset($_POST["artNom"])) {
     $addArtist = addArtist($db,$_POST['artNom']);
-        
-    if ($addArtist) {        
-        header("Location: public");
-       
-    } else {        
-        $messageError = "Something went wrong";
-    }  
+
 }
 
 if (isset($_POST["songNom"]) && isset($_POST["songSlug"]) && isset($_POST["songTab"]) && isset($_POST["artId"])) {

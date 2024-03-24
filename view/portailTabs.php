@@ -17,7 +17,7 @@
         <aside class="leftAside">Img Here</aside>
         <div class="mainH">
             <h1>Handy place to store Tabs :&rpar;</h1>
-            <nav>Links back to Portal</nav>
+            <nav>Links back to Portal and <a href="?pcheck">Add Tab</a></nav>
         </div>
         <aside class="rightAside">Img Here
             </aside>
@@ -45,7 +45,7 @@
                 }
                     ?>
                         </ul>
-                        <a href="?pcheck">Add Tab</a>
+                        
                     </section>
                     <main class="tabWindow">Tabs Here
                         <section class="tabWindow">

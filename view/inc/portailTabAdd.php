@@ -21,19 +21,19 @@
         </ul>
         
     </fieldset>
-    <p class="slugWindow">Auto Generated Slug :</p>
-    <p class="slugWindow"><span id="showSlug"></span></p>
-<?php if (isset($_GET["add"])) { ?>
+    <?php if (isset($_GET["add"])) { ?>
         <form action="" method="POST">
-                    <label for="songNom">Song : </label>
-                        <input type="text" name="songNom" id="songNamer" required>
-                        <input type="text" name="songSlug" id="songSlugger" style="display: none;">
-                        <input type="text" name="artId" value="<?=$_GET["add"]?>">
-                        <label for="songTab">Tab : </label>
-                        <textarea name="songTab" cols="30" rows="10" required>
-                        </textarea>
-                        <button type="submit">Add Song</button>
-                </form>
+            <label for="songNom">Song : </label>
+            <input type="text" name="songNom" id="songNamer" required>
+            <input type="text" name="songSlug" id="songSlugger" style="display: none;">
+            <input type="text" name="artId" value="<?=$_GET["add"]?>" style="display: none;">
+            <label for="songTab">Tab : </label>
+            <textarea name="songTab" cols="30" rows="10" required>
+                </textarea>
+                <button type="submit">Add Song</button>
+            </form>
+            <p class="slugWindow">Auto Generated Slug :</p>
+            <p class="slugWindow"><span id="showSlug"></span></p>
     <?php 
 }
  ?>   
