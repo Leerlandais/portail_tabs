@@ -14,30 +14,28 @@
         }
     
      foreach ($artists as $artist) : ?>
-        <li class="tabArtName"><?=$artist["artist_name"]?></li>
+       <a href="?pcheck&add=<?=$artist["art_id"]?>"><li class="tabArtName"><?=$artist["art_name"]?></li></a>
             <div class="addWindow">
-                <form action="" method="POST">
-                    <label for="songNom">Song : </label>
-                        <input type="text" name="songNom" id="songNamer" required>
-                        <input type="text" name="songSlug" id="songSlugger" style="display: none;">
-                        <input type="text" name="artId" value="<?=$artist["artist_id"]?>" style="display: none;">
-                        <label for="songTab">Tab : </label>
-                        <textarea name="songTab" cols="30" rows="10" required>
-                        </textarea>
-                        <button type="submit">Add Song</button>
-                </form>
-            </div>
+
             <?php endforeach; ?>
         </ul>
         
     </fieldset>
     <p class="slugWindow">Auto Generated Slug :</p>
     <p class="slugWindow"><span id="showSlug"></span></p>
-<!--
-<fieldset>
-    <legend>Add a Tab</legend>
-    <form action="" method="POST">
-        <label for="fullTab">Tab : </label><input type="text" name="fullTab">
-    </form>
-</fieldset>
-    -->
+<?php if (isset($_GET["add"])) { ?>
+        <form action="" method="POST">
+                    <label for="songNom">Song : </label>
+                        <input type="text" name="songNom" id="songNamer" required>
+                        <input type="text" name="songSlug" id="songSlugger" style="display: none;">
+                        <input type="text" name="artId" value="<?=$_GET["add"]?>">
+                        <label for="songTab">Tab : </label>
+                        <textarea name="songTab" cols="30" rows="10" required>
+                        </textarea>
+                        <button type="submit">Add Song</button>
+                </form>
+    <?php 
+}
+ ?>   
+
+        

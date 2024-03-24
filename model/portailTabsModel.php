@@ -1,5 +1,14 @@
 <?php
 
+function checkPass($passToCheck) {
+    $cleanedPass = htmlspecialchars(strip_tags(trim($passToCheck)), ENT_QUOTES);
+    if ($cleanedPass == MY_TABS_PWD) {
+        return true;
+    }else {
+        header ("public");
+    }
+}
+
 function getArtists (PDO $db) {
 
     $sql = "SELECT DISTINCT * FROM tab_artist";
@@ -30,7 +39,24 @@ function getTab (PDO $db, $slug) {
 return $result;
 }
 
+function addArtist (PDO $db, string $art) {
+    $cleanedArtist = htmlspecialchars(strip_tags(trim($art)), ENT_QUOTES);
+    $sql = "INSERT INTO tab_artist (art_name) VALUES (:artName)";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':artName', $cleanedArtist);
+    try {
+        $stmt->execute();
+        $db->commit();
+        return true;
+    } catch (PDOException $e) {
+        error_log("Error adding Artist: " . $e->getMessage());
+        return false;
+}
+}
 
+function addTablature(PDO $db, $name, $slug, $tab, $id) {
+    var_dump($name, $slug, $tab, $id);
+}
 /*
 
 function getArtists(PDO $db){

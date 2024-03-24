@@ -11,6 +11,7 @@
         <?php 
     // var_dump area
   //   var_dump($songs);    
+  $checkedPwd = true;
         ?>
     <div class="global">
         <aside class="leftAside">Img Here</aside>
@@ -26,7 +27,7 @@
                 <ul>
                     <?php  foreach ($artists as $artist) : 
                         ?>
-                     <a href="?art=<?=$artist["art_id"]?>"><li class="showSong"><?=$artist["art_name"]?></li></a>
+                     <a href="?&art=<?=$artist["art_id"]?>"><li class="showSong"><?=$artist["art_name"]?></li></a>
                         <?php 
                     endforeach; ?>
                     </ul>
@@ -44,7 +45,7 @@
                 }
                     ?>
                         </ul>
-                        <a href="">Add Tab</a>
+                        <a href="?pcheck">Add Tab</a>
                     </section>
                     <main class="tabWindow">Tabs Here
                         <section class="tabWindow">
@@ -55,11 +56,29 @@
                             <pre>
                                 <p><?=$tab["tab"]?></p>
                             </pre>
-                        </section>
-                        <?php 
+                            <?php 
                  endforeach;
-            }
+                }
                     ?>
+                    <?php
+                    if (isset($_GET['pcheck'])) { ?>
+                        <?php if (!isset($checkedPwd)) {
+                            echo "Enter the Password";?>
+                            <form action="" method="POST">
+                                <input type="password" name="pwd" id="pwd">
+                                <button type="submit">Enter</button>
+                            </form>
+                            
+                            <?php
+                            }else if (isset($checkedPwd)) {
+                                include("inc/portailTabAdd.php");
+                            }else if (isset($_GET["add"])) {
+                                include("inc/portailTabAdd.php");
+                            }
+                            
+                            ?>
+                    <?php } ?>
+                </section>
                         </main>
     </div>
 <script src="scripts/tabs.js"></script>

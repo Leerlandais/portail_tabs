@@ -36,7 +36,7 @@ aside {
     grid-area: art-aside;
 }
 
-.artAside ul {
+.artAside ul, .addSong ul {
     list-style: none;
     padding: 0;
 }
