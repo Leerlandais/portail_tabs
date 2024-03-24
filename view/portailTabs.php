@@ -39,7 +39,7 @@
                         
                         ?>
                             <ul class="songList">
-                        <a href="?pg&art=<?=$song["artist_id"]?>&slug=<?=$song["song_slug"]?>"><li><?=$song["song_name"]?></li></a>
+                        <a href="?pg&slug=<?=$song["song_slug"]?>"><li><?=$song["song_name"]?></li></a>
                         <?php 
                     endforeach; 
                 }
