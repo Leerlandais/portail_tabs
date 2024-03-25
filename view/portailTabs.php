@@ -11,7 +11,7 @@
         <?php 
     // var_dump area
   //   var_dump($songs);    
-  $checkedPwd = true;
+
         ?>
     <div class="global">
         <aside class="leftAside"></aside>
@@ -71,7 +71,7 @@
                             </form>
                             
                             <?php
-                            }else if (isset($checkedPwd)) {
+                            }else if (isset($checkedPwd) && $checkedPwd == true) {
                                 include("inc/portailTabAdd.php");
                             }else if (isset($_GET["add"])) {
                                 include("inc/portailTabAdd.php");
