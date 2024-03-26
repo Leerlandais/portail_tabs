@@ -30,6 +30,15 @@ function getSongs (PDO $db, $art) {
 return $result;
 }
 
+function getAllSongs (PDO $db) {
+    $sql = "SELECT * FROM tab_song ORDER BY song_name ASC";
+
+    $query = $db->query($sql);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+return $result;
+}
+
 function getTab (PDO $db, $slug) {
     $cleanedSlug = htmlspecialchars(strip_tags(trim($slug)), ENT_QUOTES);
     $sql = "SELECT * FROM `tab_tab` WHERE `tab_slug` = '$cleanedSlug'";
