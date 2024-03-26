@@ -43,6 +43,7 @@
                         <?php 
                     endforeach; 
                 }
+                if (isset($tabs)) {                
                     ?>
                         </ul>
                         
@@ -51,7 +52,6 @@
                         <section class="tabWindow">
                     <?php 
                     
-                if (isset($tabs)) {                
                     foreach ($tabs as $tab) :     
                         ?><button onClick="scrollToBottom('.tabWindow',1000)">Scroll to Bottom</button>
                             <pre>
