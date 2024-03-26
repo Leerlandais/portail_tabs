@@ -33,6 +33,10 @@ if (isset($_POST["artNom"])) {
 
 }
 
+if (isset($_GET["sort"])) {
+    $songs = getAllSongs($db);
+}
+
 if (isset($_POST["songNom"]) && isset($_POST["songSlug"]) && isset($_POST["songTab"]) && isset($_POST["artId"])) {
     //   var_dump($_POST["songNom"], $_POST["songTab"], $_POST["songSlug"], $_POST["artId"]);
        $addTab = addTablature($db, $_POST["songNom"], $_POST["songSlug"], $_POST["songTab"], $_POST["artId"]);
