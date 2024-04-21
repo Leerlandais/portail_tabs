@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "../config.php";
 require_once "../model/portailTabsModel.php";
 
@@ -30,6 +30,7 @@ if (isset($_POST["pwd"])) {
 
 if (isset($_POST["artNom"])) {
     $addArtist = addArtist($db,$_POST['artNom']);
+    echo "<meta http-equiv='refresh' content='0'>";
 
 }
 
@@ -40,6 +41,7 @@ if (isset($_GET["sort"])) {
 if (isset($_POST["songNom"]) && isset($_POST["songSlug"]) && isset($_POST["songTab"]) && isset($_POST["artId"])) {
     //   var_dump($_POST["songNom"], $_POST["songTab"], $_POST["songSlug"], $_POST["artId"]);
        $addTab = addTablature($db, $_POST["songNom"], $_POST["songSlug"], $_POST["songTab"], $_POST["artId"]);
+       echo "<meta http-equiv='refresh' content='0'>";
    }
 
 

@@ -44,7 +44,7 @@
             ?>
             <?php
             if (isset($_GET['pcheck'])) { ?>
-                <?php if (!isset($checkedPwd)) {
+                <?php if (!isset($_SESSION['ID']) || $_SESSION['ID']!== session_id()) {
                     echo "Enter the Password";?>
                     <form action="" method="POST">
                         <input type="password" name="pwd" id="pwd">
@@ -52,7 +52,7 @@
                     </form>
                     
                     <?php
-                    }else if (isset($checkedPwd) && $checkedPwd == true) {
+                    }else if (isset($_SESSION['ID']) || $_SESSION['ID'] === session_id()) {
                         include("portailTabAdd.php");
                     }else if (isset($_GET["add"])) {
                         include("portailTabAdd.php");
